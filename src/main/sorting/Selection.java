@@ -1,7 +1,6 @@
 package main.sorting;
 
 public class Selection extends Base{
-
     // finds lowest element in the collection and places it at the beginning
     @Override
     public <T extends Comparable<T>> T[] sort(T[] array, Class<T> clazz) {

@@ -1,7 +1,7 @@
 package test;
 
-import main.searching.Binary;
 import main.searching.Base;
+import main.searching.Binary;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -69,5 +69,17 @@ public class SearchingTest {
     public void shouldNotFindElementIfNotInArray() {
         int searchingResult = this.searching.search(SORTED_INT_ARRAY, 500);
         Assert.assertEquals(-1, searchingResult);
+    }
+
+    @Test
+    public void shouldNotFindElementIfArrayOfSizeOne() {
+        int searchingResult = this.searching.search(new Integer[]{1}, 500);
+        Assert.assertEquals(-1, searchingResult);
+    }
+
+    @Test
+    public void shouldFindElementIfArrayOfSizeOne() {
+        int searchingResult = this.searching.search(new Integer[]{1}, 1);
+        Assert.assertEquals(0, searchingResult);
     }
 }
