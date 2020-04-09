@@ -18,4 +18,6 @@ public interface LinkedList<E> {
     Object getFirst();
 
     Object getLast();
+
+    Object get(int index);
 }

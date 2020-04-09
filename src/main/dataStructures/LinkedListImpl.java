@@ -35,24 +35,27 @@ public class LinkedListImpl implements LinkedList {
                 this.first = new Node(null, obj);
                 return;
             } else {
-                throw new IndexOutOfBoundsException();
+                this.first = new Node(this.first, obj);
+                return;
             }
         }
         int k = 1;
         Node last = this.first;
         while (last.next != null) {
-            if (k == index)
-                throw new IndexOutOfBoundsException();
+            if (k == index) {
+                last.next = new Node(last.next, obj);
+                return;
+            }
             last = last.next;
             k++;
         }
-        last.next = new Node(null, obj);
+        throw new IndexOutOfBoundsException();
     }
 
     @Override
     public void remove(Object obj) {
         if (this.first.value.equals(obj)) {
-            this.first = null;
+            this.first = this.first.next;
             return;
         }
         Node last = this.first;
@@ -67,7 +70,25 @@ public class LinkedListImpl implements LinkedList {
 
     @Override
     public void remove(int index) {
-
+        if (this.length() - 1 < index) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (index == 0) {
+            if (this.first != null) {
+                this.first = this.first.next;
+                return;
+            }
+        }
+        int k = 1;
+        Node last = this.first;
+        while (last.next != null) {
+            if (k == index) {
+                last.next = last.next.next;
+                return;
+            }
+            last = last.next;
+            k++;
+        }
     }
 
     @Override
@@ -109,6 +130,24 @@ public class LinkedListImpl implements LinkedList {
         }
         return last.value;
     }
+
+    @Override
+    public Object get(int index) {
+        if (this.length() - 1 < index) {
+            throw new IndexOutOfBoundsException();
+        }
+        int k = 0;
+        Node last = this.first;
+        while (last != null) {
+            if (k == index) {
+                break;
+            }
+            last = last.next;
+            k++;
+        }
+        return last.value;
+    }
+
 
     private class Node {
         private Node next;

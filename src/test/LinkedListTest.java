@@ -47,6 +47,22 @@ public class LinkedListTest {
     }
 
     @Test
+    public void shouldAddElementInGivenIndex() {
+        Car testCar = new Car("x", 8);
+        Car testCar2 = new Car("z", 5);
+        Car testCar3 = new Car("t", 1);
+
+        customList.addFirst(testCar);
+        customList.addFirst(testCar2);
+
+        customList.add(testCar3, 1);
+
+        Assert.assertEquals(testCar2, customList.getFirst());
+        Assert.assertEquals(testCar, customList.getLast());
+        Assert.assertEquals(testCar3, customList.get(1));
+    }
+
+    @Test
     public void shouldRemoveElement() {
         Car testCar = new Car("x", 8);
         Car testCar2 = new Car("z", 5);
@@ -56,6 +72,19 @@ public class LinkedListTest {
         Assert.assertEquals(testCar, customList.getLast());
         customList.remove(testCar);
         Assert.assertEquals(null, customList.getLast());
+    }
+
+    @Test
+    public void shouldRemoveElementFromGivenIndex() {
+        Car testCar = new Car("x", 8);
+        Car testCar2 = new Car("z", 5);
+        customList.addLast(testCar);
+        customList.addLast(testCar2);
+
+        customList.remove(0);
+
+        Assert.assertFalse(customList.contains(testCar));
+        Assert.assertEquals(1, customList.length());
     }
 
     @Test
