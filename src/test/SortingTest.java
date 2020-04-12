@@ -1,14 +1,12 @@
 package test;
 
-import main.sorting.Base;
-import main.sorting.Bubble;
-import main.sorting.Merge;
-import main.sorting.Selection;
-import org.junit.*;
+import main.sorting.*;
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import test.helper.Car;
-import org.junit.Assert;
 
 import java.util.Arrays;
 
@@ -33,7 +31,7 @@ public class SortingTest {
 
     @Parameterized.Parameters
     public static Iterable<Base> data() {
-        return Arrays.asList(new Base[]{new Selection(), new Bubble(), new Merge()});
+        return Arrays.asList(new Base[]{new Selection(), new Bubble(), new Merge(), new Quick()});
     }
 
     @BeforeClass
@@ -47,14 +45,12 @@ public class SortingTest {
     @Test
     public void shouldNotSortAlreadySortedArray() {
         Integer[] sortingResult = this.sorting.sort(SORTED_INT_ARRAY, Integer.class);
-//        System.out.println(Arrays.toString(sortingResult));
         Assert.assertArrayEquals(SORTED_INT_ARRAY, sortingResult);
     }
 
     @Test
     public void shouldSortArraySortedDesc() {
         Integer[] sortingResult = this.sorting.sort(SORTED_INT_ARRAY_DESC, Integer.class);
-//        System.out.println(Arrays.toString(sortingResult));
         Assert.assertArrayEquals(SORTED_INT_ARRAY, sortingResult);
     }
 
