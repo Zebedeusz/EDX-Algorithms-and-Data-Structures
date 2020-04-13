@@ -1,4 +1,4 @@
-package main.dataStructures;
+package main.structures;
 
 public interface LinkedList<E> {
     void addFirst(Object obj);
