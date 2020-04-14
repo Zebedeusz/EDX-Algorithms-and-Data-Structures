@@ -1,11 +1,13 @@
-package main.structures.graphs;
+package main.structures.graphs.models;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Vertex {
     private String name;
 
-    private List<Vertex> adjacent;
+    private List<Vertex> adjacent = new ArrayList<>();
 
     public Vertex(String name) {
         this.name = name;
@@ -27,7 +29,14 @@ public class Vertex {
         return adjacent;
     }
 
-    public void setAdjacent(List<Vertex> adjacent) {
-        this.adjacent = adjacent;
+    public void setAdjacent(Vertex... adjacent) {
+        this.adjacent = Arrays.asList(adjacent);
+    }
+
+    public void connectWith(Vertex... adjacent) {
+        for(Vertex vertex : adjacent) {
+            this.adjacent.add(vertex);
+            vertex.addAdjacent(this);
+        }
     }
 }

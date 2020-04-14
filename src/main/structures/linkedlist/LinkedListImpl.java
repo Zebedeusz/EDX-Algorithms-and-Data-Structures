@@ -1,4 +1,4 @@
-package main.structures;
+package main.structures.linkedlist;
 
 public class LinkedListImpl implements LinkedList {
     private Node first;

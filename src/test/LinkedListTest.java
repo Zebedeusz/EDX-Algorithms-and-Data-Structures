@@ -1,7 +1,7 @@
 package test;
 
-import main.structures.LinkedList;
-import main.structures.LinkedListImpl;
+import main.structures.linkedlist.LinkedList;
+import main.structures.linkedlist.LinkedListImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

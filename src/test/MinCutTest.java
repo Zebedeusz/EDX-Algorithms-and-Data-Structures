@@ -1,8 +1,8 @@
 package test;
 
-import main.structures.graphs.Edge;
-import main.structures.graphs.GraphUtils;
-import main.structures.graphs.Vertex;
+import main.structures.graphs.models.Edge;
+import main.structures.graphs.MinCut;
+import main.structures.graphs.models.Vertex;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,9 +13,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RunWith(value = JUnit4.class)
-public class GraphUtilsTest {
+public class MinCutTest {
 
-    private GraphUtils graphUtils = new GraphUtils();
+    private MinCut graphUtils = new MinCut();
 
     @Test
     public void shouldReturnCorrectMinCutCase1() {
@@ -31,7 +31,7 @@ public class GraphUtilsTest {
         edges.add(new Edge(vertex3, vertex4));
 
 //        when
-        List<Edge> minCut = graphUtils.minCut(edges);
+        List<Edge> minCut = graphUtils.calculate(edges);
 
 //        then
         Assert.assertEquals(1, minCut.size());
@@ -68,7 +68,7 @@ public class GraphUtilsTest {
         edges.add(new Edge(vertex7, vertex8));
 
 //        when
-        List<Edge> minCut = graphUtils.minCut(edges);
+        List<Edge> minCut = graphUtils.calculate(edges);
 
 //        then
         Assert.assertEquals(1, minCut.size());
@@ -84,7 +84,7 @@ public class GraphUtilsTest {
         edges.add(new Edge(vertex1, vertex2));
 
 //        when
-        List<Edge> minCut = graphUtils.minCut(edges);
+        List<Edge> minCut = graphUtils.calculate(edges);
 
 //        then
         Assert.assertEquals(1, minCut.size());
@@ -99,7 +99,7 @@ public class GraphUtilsTest {
         List<Edge> edges = new ArrayList<>();
 
 //        when
-        List<Edge> minCut = graphUtils.minCut(edges);
+        List<Edge> minCut = graphUtils.calculate(edges);
 
 //        then
         Assert.assertEquals(0, minCut.size());

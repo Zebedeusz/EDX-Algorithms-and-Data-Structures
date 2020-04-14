@@ -1,4 +1,4 @@
-package main.structures.graphs;
+package main.structures.graphs.models;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,5 +1,8 @@
 package main.structures.graphs;
 
+import main.structures.graphs.models.Edge;
+import main.structures.graphs.models.Vertex;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -7,8 +10,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class GraphUtils {
-    public List<Edge> minCut(List<Edge> edges) {
+public class MinCut {
+    public List<Edge> calculate(List<Edge> edges) {
         List<Edge> minCutEdges = new ArrayList<>(edges);
 
         if (minCutEdges.size() < 2) {
