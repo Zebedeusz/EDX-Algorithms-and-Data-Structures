@@ -14,7 +14,8 @@ public class BreadthFirstSearch {
         verticesToCheck.add(source);
 
         while (!verticesToCheck.isEmpty()) {
-            Vertex vertexToCheck = verticesToCheck.pop();
+            Vertex vertexToCheck = verticesToCheck.removeFirst();
+//            to change to DepthFirstChange: Vertex vertexToCheck = verticesToCheck.removeLast();
             if(discovered.contains(vertexToCheck)) {
                 continue;
             }
@@ -29,5 +30,31 @@ public class BreadthFirstSearch {
             }
         }
         return discovered;
+    }
+    public Vertex find(Vertex source, String nameToFind) {
+        List<Vertex> discovered = new ArrayList<>();
+
+        LinkedList<Vertex> verticesToCheck = new LinkedList<Vertex>();
+        verticesToCheck.add(source);
+
+        while (!verticesToCheck.isEmpty()) {
+            Vertex vertexToCheck = verticesToCheck.pop();
+            if(discovered.contains(vertexToCheck)) {
+                continue;
+            }
+            if(vertexToCheck.getName().equals(nameToFind)) {
+                return vertexToCheck;
+            }
+            discovered.add(vertexToCheck);
+            List<Vertex> adjacentVertices = vertexToCheck.getAdjacent();
+            if(adjacentVertices != null) {
+                for (Vertex adjacentVertex : adjacentVertices) {
+                    if(!discovered.contains(adjacentVertex)) {
+                        verticesToCheck.add(adjacentVertex);
+                    }
+                }
+            }
+        }
+        return null;
     }
 }
